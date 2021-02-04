@@ -1,0 +1,25 @@
+.. _dataloadermodule: dataloader
+
+Module DataLoader
+*****************
+This document describes all classes of the module dataloader.
+
+.. automodule:: scisum.infrastructure.dataloader
+
+============================================================
+    Class
+============================================================
+
+.. autoclass:: scisum.infrastructure.dataloader.DataLoader()
+
+************************************************************
+    Properties
+************************************************************
+
+    .. automethod:: scisum.infrastructure.dataloader.DataLoader.all_data()
+
+************************************************************
+    Methods
+************************************************************
+
+    .. automethod:: scisum.infrastructure.dataloader.DataLoader.get_task_data()

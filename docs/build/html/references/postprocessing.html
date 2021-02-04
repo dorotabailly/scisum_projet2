@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module postprocessing &#8212; Bartscisum  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-postprocessing">
+<h1>Module postprocessing<a class="headerlink" href="#module-postprocessing" title="Permalink to this headline">¶</a></h1>
+<p>This document describes all classes of the module tokenizer.</p>
+<span class="target" id="module-scisum.domain.postprocessing"></span><p>Post processing utils module.</p>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<p>Postprocessor</p>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="scisum.domain.postprocessing.remove_leading_the">
+<code class="sig-prename descclassname">scisum.domain.postprocessing.</code><code class="sig-name descname">remove_leading_the</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entity</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#scisum.domain.postprocessing.remove_leading_the" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove leading the</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>entity</strong> (<em>str</em>) – Entity potentially carrying leading the</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>text_wo_leading_the</strong> – Text freed from leading the</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="scisum.domain.postprocessing.clean_output_no_token_edit">
+<code class="sig-prename descclassname">scisum.domain.postprocessing.</code><code class="sig-name descname">clean_output_no_token_edit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">summary</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#scisum.domain.postprocessing.clean_output_no_token_edit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean ouput to be nice to read. Does not change the token sequence. Only edits each token.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>summary</strong> (<em>str</em>) – Raw summary to clean</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>summary</strong> – Clean summary, ready to be read</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="scisum.domain.postprocessing.postprocess_tags">
+<code class="sig-prename descclassname">scisum.domain.postprocessing.</code><code class="sig-name descname">postprocess_tags</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scisum.domain.postprocessing.postprocess_tags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean tags values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tags</strong> (<em>str</em>) – Tags</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cleaned_tags</strong> – Cleaned tags</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="class">
+<h2>Class<a class="headerlink" href="#class" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="scisum.domain.postprocessing.Postprocessor">
+<em class="property">class </em><code class="sig-prename descclassname">scisum.domain.postprocessing.</code><code class="sig-name descname">Postprocessor</code><a class="headerlink" href="#scisum.domain.postprocessing.Postprocessor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="section" id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="py method">
+<dt id="scisum.domain.postprocessing.Postprocessor.transform">
+<code class="sig-prename descclassname">Postprocessor.</code><code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">summary</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">format_text</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">abbreviate</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">remove_compounds</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#scisum.domain.postprocessing.Postprocessor.transform" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>summary</strong> (<em>str</em>) – Summary to postprocess</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>summary</strong> – Postprocessed summary</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Bartscisum</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Antoine, Dorota, Robin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/references/postprocessing.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module model &#8212; Bartscisum  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-model">
+<h1>Module model<a class="headerlink" href="#module-model" title="Permalink to this headline">¶</a></h1>
+<p>This document describes all classes of the module model.</p>
+<span class="target" id="module-scisum.domain.model"></span><p>This module performs predictions on text files.</p>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<p>SummerizationModel
+TagsRecoveringModel</p>
+</div>
+<div class="section" id="class">
+<h2>Class<a class="headerlink" href="#class" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="scisum.domain.model.SummerizationModel">
+<em class="property">class </em><code class="sig-prename descclassname">scisum.domain.model.</code><code class="sig-name descname">SummerizationModel</code><a class="headerlink" href="#scisum.domain.model.SummerizationModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to perform both summarization and title generation. We allow ourselves to centralize everything here
+as it relies on the same model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_name</strong> (<em>str</em>) – Name of the model</p></li>
+<li><p><strong>tokenizer_name</strong> (<em>str</em>) – Name of the tokenizer</p></li>
+<li><p><strong>framework</strong> (<em>str</em>) – Framework to leverage (pt or tf)</p></li>
+<li><p><strong>text_split_max_length</strong> (<em>int</em>) – text_split_max_length - attribute of the Tokenizer class, used to split_text</p></li>
+<li><p><strong>tolerance</strong> (<em>int</em>) – tolerance around ratio text /summary in number of words</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="section" id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="py method">
+<dt id="scisum.domain.model.SummerizationModel.summarise">
+<code class="sig-prename descclassname">SummerizationModel.</code><code class="sig-name descname">summarise</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">ratio</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">summarize_only_first_split</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">tolerance</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scisum.domain.model.SummerizationModel.summarise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Summarise a text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – Text to summarise</p></li>
+<li><p><strong>ratio</strong> (<em>float</em>) – Ratio text / summary</p></li>
+<li><p><strong>summarize_only_first_split</strong> (<em>int</em>) – Summarize only first split if True (1)</p></li>
+<li><p><strong>tolerance</strong> (<em>int</em>) – tolerance around ratio text /summary in number of words</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>candidate</strong> – Summary of the text</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="scisum.domain.model.SummerizationModel.generate_title">
+<code class="sig-prename descclassname">SummerizationModel.</code><code class="sig-name descname">generate_title</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">min_title</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">max_title</span><span class="o">=</span><span class="default_value">15</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scisum.domain.model.SummerizationModel.generate_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate title from a lead paragraph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – Text of the lead paragraph</p></li>
+<li><p><strong>min_title</strong> (<em>int</em>) – Min length of the title</p></li>
+<li><p><strong>max_title</strong> (<em>int</em>) – Max length of the title</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>candidate</strong> – Title of the text</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Class<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="scisum.domain.model.TagsRecoveringModel">
+<em class="property">class </em><code class="sig-prename descclassname">scisum.domain.model.</code><code class="sig-name descname">TagsRecoveringModel</code><a class="headerlink" href="#scisum.domain.model.TagsRecoveringModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform tags recovering task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_name</strong> (<em>str</em>) – Generic name of the model</p></li>
+<li><p><strong>model_path</strong> (<em>str</em>) – Path to the trained model</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="section" id="id2">
+<h3>Methods<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="py method">
+<dt id="scisum.domain.model.TagsRecoveringModel.generate_tags">
+<code class="sig-prename descclassname">TagsRecoveringModel.</code><code class="sig-name descname">generate_tags</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scisum.domain.model.TagsRecoveringModel.generate_tags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate tags from title and summary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Text of the lead paragraph.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>predicted_tags</strong> – List of tuple containing predicted tags.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Bartscisum</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Antoine, Dorota, Robin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/references/model.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
